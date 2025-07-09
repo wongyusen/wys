@@ -1,0 +1,36 @@
+# 这是一个帮助您开始使用 Actions 的基本工作流程
+
+名字：CI
+
+# 控制工作流的运行时间
+上：
+  # 在推送或拉取请求事件上触发工作流，但仅针对 “main” 分支
+推：
+分支： [“main”]  
+pull_request：
+分支： [“main”]  
+
+  # 允许您从 Actions 选项卡手动运行此工作流
+workflow_dispatch：
+
+# 工作流运行由一个或多个可以按顺序或并行运行的作业组成
+工作：
+  # 此工作流包含一个名为 “build” 的作业# 此工作流包含一个名为 “build” 的作业
+建：
+    # 作业将在其上运行的 runner 类型# 作业将在其上运行的 runner 类型
+runs-on： 运行时间：ubuntu-latest
+
+    # 步骤表示将作为作业的一部分执行的任务序列# 步骤表示将作为作业的一部分执行的任务序列
+步骤：
+      # 在 $GITHUB_WORKSPACE 下签出你的仓库，这样你的作业就可以访问它# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+- uses： - 用途：actions/checkout@v4
+
+      # 使用 runners shell 运行单个命令# 使用 runners shell 运行单个命令
+      - name:       - name：运行单行脚本
+run： run： echo 你好，世界！
+
+      # 使用 runners shell 运行一组命令# 使用 runners shell 运行一组命令
+      - name:       - name： 运行多行脚本
+运行： |
+          echo 添加其他作以构建，
+          echo test 并部署您的项目。
